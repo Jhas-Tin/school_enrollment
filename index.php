@@ -253,7 +253,24 @@ $stmt->close();
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-    <!-- <a class="navbar-brand" href="#"><?php echo htmlspecialchars($schoolName); ?></a> -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <?php if (!empty($school['logo']) && file_exists("uploads/".$school['logo'])): ?>
+                <img src="uploads/<?= htmlspecialchars($school['logo']) ?>"
+                    alt="School Logo"
+                    style="
+                        width:40px;
+                        height:40px;
+                        border-radius:50%;
+                        object-fit:cover;
+                        border:2px solid #6f42c1;
+                        background:#fff;
+                        box-shadow:0 0 10px rgba(111,66,193,0.6);
+                    ">
+            <?php endif; ?>
+
+            <!-- <span><?= htmlspecialchars($schoolName) ?></span> -->
+
+        </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -261,29 +278,51 @@ $stmt->close();
         <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="contact_now.php">Contact Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="enroll.php">Enroll Now</a></li>
+        <li class="nav-item"><a class="nav-link" href="enroll.php">Enroll</a></li>
         </ul>
         <button id="navbarLoginBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
     </div>
     </nav>
-    <!-- <section class="hero">
-        <img class="hero-bg" 
-            src="<?= !empty($school['logo']) && file_exists('uploads/'.$school['logo']) 
-                    ? 'uploads/'.htmlspecialchars($school['logo']) 
-                    : 'assets/default-logo.png' ?>" 
-            alt="School Background">
-
-        <div class="overlay"></div>
-
-        <div class="hero-content">
-            <h1>Welcome to <?= htmlspecialchars($schoolName) ?></h1>
-            <button class="btn-get" data-bs-toggle="modal" data-bs-target="#loginModal">Get Started</button>
-        </div>
-    </section> -->
-
-
-
-
+    <section class="hero">
+            <?php if (!empty($school['logo']) && file_exists("uploads/".$school['logo'])): ?>
+                <img class="hero-bg"
+                    src="uploads/<?= htmlspecialchars($school['logo']) ?>"
+                    alt="School Background">
+                <div class="overlay"></div>
+            <?php else: ?>
+                <div style="
+                    position:absolute;
+                    inset:0;
+                    background:linear-gradient(135deg,#563d7c,#6f42c1,#8e44ad);
+                    z-index:0;
+                "></div>
+            <?php endif; ?>
+            <div class="hero-content">
+                <?php if (empty($school['logo']) || !file_exists("uploads/".$school['logo'])): ?>
+                    <h1>Welcome to <?= htmlspecialchars($schoolName) ?></h1>
+                    <p style="font-size:1.2rem;opacity:0.95;max-width:600px;margin:auto;">
+                        Your school portal is almost ready.  
+                        Upload your school logo to personalize this system.
+                    </p>
+                    <div style="
+                        margin-top:25px;
+                        padding:18px 28px;
+                        background:rgba(0,0,0,0.3);
+                        border-radius:16px;
+                        display:inline-block;
+                        backdrop-filter:blur(8px);
+                        box-shadow:0 0 20px rgba(0,0,0,0.4);
+                    ">
+                        <strong>Admin:</strong> Go to <em>School Profile</em> to upload your logo.
+                    </div>
+                <?php else: ?>
+                    <h1>Welcome to <?= htmlspecialchars($schoolName) ?></h1>
+                <?php endif; ?>
+                <button class="btn-get mt-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Get Started
+                </button>
+            </div>
+        </section>
 
     <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
