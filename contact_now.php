@@ -223,7 +223,6 @@ body {
 <div class="contact-container">
 <div class="contact-form">
 <h2>Contact Us</h2>
-
 <?php if (!empty($_SESSION['contact_error'])): ?>
 <div class="alert alert-danger auto-hide"><?= $_SESSION['contact_error']; unset($_SESSION['contact_error']); ?></div>
 <?php endif; ?>
@@ -236,15 +235,17 @@ body {
 <input class="form-control mb-3" name="name" placeholder="Your Name" required>
 <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
 <textarea class="form-control mb-3" name="message" rows="5" placeholder="Message" required></textarea>
+
 <div class="d-flex align-items-center gap-2 mb-3">
-<strong class="fs-5 text-primary"><?= $_SESSION['captcha_code'] ?></strong>
+<strong class="fs-5 text-primary captcha-text"><?= $_SESSION['captcha_code'] ?></strong>
 <input class="form-control" name="captcha_code" placeholder="Enter Captcha" required>
 </div>
 <button type="submit">Send</button>
 </form>
 </div>
 
-<div class="contact-info">
+<div class="contact-info" style="<?php if (!empty($school['logo']) && file_exists('uploads/'.$school['logo'])): ?> background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('uploads/<?= htmlspecialchars($school['logo']) ?>') center/cover no-repeat;
+<?php else: ?>background: linear-gradient(135deg,#563d7c,#6f42c1,#8e44ad);<?php endif; ?> olor:#fff; display:flex; flex-direction:column; justify-content:center; min-width:280px; padding:30px;">
 <h3>Contact Info</h3>
 <p><i class="bi bi-building"></i><?= htmlspecialchars($school['name']) ?></p>
 <p><i class="bi bi-geo-alt"></i><?= htmlspecialchars($school['location']) ?></p>
@@ -252,6 +253,7 @@ body {
 <p><i class="bi bi-phone"></i><?= htmlspecialchars($school['mobile']) ?></p>
 <p><i class="bi bi-telephone"></i><?= htmlspecialchars($school['telephone']) ?></p>
 </div>
+
 </div>
 
 <div class="modal fade" id="loginModal">
@@ -279,6 +281,19 @@ setTimeout(() => {
         setTimeout(() => alert.remove(), 500);
     });
 }, 3000);
+</script>
+
+<script>
+    document.querySelectorAll('.captcha-text').forEach(el => {
+        el.style.userSelect = 'none';
+        el.addEventListener('copy', e => e.preventDefault());
+    });
+    setTimeout(() => {
+        document.querySelectorAll('.auto-hide').forEach(alert => {
+            alert.classList.add('fade');
+            setTimeout(() => alert.remove(), 500);
+        });
+    }, 3000);
 </script>
 
 </body>
