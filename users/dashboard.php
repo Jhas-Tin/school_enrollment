@@ -26,6 +26,19 @@
         $schoolName = $dbSchoolName;
     }
     $stmt->close();
+     $school = [
+        'name' => 'Smart School System',
+        'logo' => ''
+    ];
+
+    $stmt = $conn->prepare("SELECT name, logo FROM school_profile WHERE id = 1 LIMIT 1");
+    $stmt->execute();
+    $stmt->bind_result($dbSchoolName, $dbLogo);
+    if ($stmt->fetch()) {
+        if (!empty($dbSchoolName)) $school['name'] = $dbSchoolName;
+        if (!empty($dbLogo)) $school['logo'] = $dbLogo;
+    }
+    $stmt->close();
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -269,7 +282,14 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="dashboard.php"><?= htmlspecialchars($schoolName) ?></a>
+        <a class="navbar-brand d-flex align-items-center gap-2" href="dashboard.php">
+            <?php if (!empty($school['logo']) && file_exists('../uploads/'.$school['logo'])): ?>
+                <img src="../uploads/<?= htmlspecialchars($school['logo']) ?>" 
+                    alt="School Logo" 
+                    style="width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid #1e3a8a;">
+            <?php endif; ?>
+            <span><?= htmlspecialchars($school['name']) ?></span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
