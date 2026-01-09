@@ -282,7 +282,7 @@ input[disabled] {
              ">
     <?php endif; ?>
 
-    <!-- <span><?= htmlspecialchars($schoolName) ?></span> -->
+    <span><?= htmlspecialchars($schoolName) ?></span>
 </a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
   <span class="navbar-toggler-icon"></span>
