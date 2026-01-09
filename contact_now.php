@@ -206,7 +206,11 @@ body {
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-<a class="navbar-brand"><?= htmlspecialchars($schoolName) ?></a>
+<a class="navbar-brand d-flex align-items-center gap-2" href="#">
+<?php if (!empty($school['logo']) && file_exists("uploads/".$school['logo'])): ?>
+<img src="uploads/<?= htmlspecialchars($school['logo']) ?>" alt="School Logo" style="width:40px; height:40px; border-radius:50%;object-fit:cover;border:2px solid #6f42c1;background:#fff;box-shadow:0 0 10px rgba(111,66,193,0.6);"><?php endif; ?>
+<span><?= htmlspecialchars($schoolName) ?></span>
+</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
