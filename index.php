@@ -31,223 +31,232 @@ $stmt->close();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
     :root {
-        --primary-color: #6f42c1;
-        --primary-dark: #563d7c;
-        --bg-dark: #1f1f2e;
-        --section-bg: #2a2a3f;
-        --input-bg: #3a3a50;
-        --text-light: #f1f1f1;
-        --button-gradient: linear-gradient(135deg, #6f42c1, #8e44ad);
-        --button-hover: linear-gradient(135deg, #8e44ad, #6f42c1);
-    }
-    body {
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        background: var(--bg-dark);
-        margin: 0;
-        color: var(--text-light);
-    }
-    .navbar {
-        background: #22223b;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        padding: 1rem 2rem;
-        border-radius: 0 0 20px 20px;
-    }
-    .navbar-brand {
-        font-weight: 700;
-        color: var(--primary-color);
-        font-size: 1.5rem;
-    }
-    .navbar-nav .nav-link {
-        color: #ccc;
-        font-weight: 500;
-        margin-right: 20px;
-        transition: 0.3s;
-    }
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active {
-        color: var(--primary-color);
-    }
-    
-    .modal-content {
-        border-radius: 20px;
-        padding: 40px 30px;
-        border: none;
-        background: var(--section-bg);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    }
-    .modal .bi-person-fill {
-        font-size: 2.5rem;
-    }
-    .modal input {
-        border-radius: 12px;
-        padding: 12px;
-        background: var(--input-bg);
-        color: var(--text-light);
-        border: none;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        transition: 0.3s;
-    }
-    .modal input::placeholder {
-        color: #bbb;
-    }
-    .modal input:focus {
-        border: 2px solid var(--primary-color);
-        box-shadow: 0 4px 15px rgba(111,66,193,0.5);
-    }
-    .modal button {
-        border-radius: 50px;
-        padding: 12px 0;
-        background: var(--button-gradient);
-        border: none;
-        transition: 0.4s;
-        color: #fff;
-        font-weight: 600;
-        box-shadow: 0 4px 15px rgba(111,66,193,0.4);
-    }
-    .modal button:hover {
-        background: var(--button-hover);
-        box-shadow: 0 6px 20px rgba(111,66,193,0.6);
-    }
-    #navbarLoginBtn {
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-weight: 600;
-        background: var(--button-gradient);
-        border: none;
-        color: #fff;
-        transition: 0.4s;
-        box-shadow: 0 4px 15px rgba(111,66,193,0.4);
-    }
-    #navbarLoginBtn:hover {
-        background: var(--button-hover);
-        box-shadow: 0 6px 20px rgba(111,66,193,0.6);
-    }
-    #toastContainer {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1080;
-    }
-    .toast {
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        font-weight: 500;
-    }
-    .toast-body {
-        font-weight: 500;
-        color: #fff;
-        background: #b00020;
-    }
+            --primary-color: #6f42c1;
+            --primary-dark: #563d7c;
+            --bg-dark: #1f1f2e;
+            --section-bg: #2a2a3f;
+            --input-bg: #3a3a50;
+            --text-light: #f1f1f1;
+            --button-gradient: linear-gradient(135deg, #6f42c1, #8e44ad);
+            --button-hover: linear-gradient(135deg, #8e44ad, #6f42c1);
+        }
 
-    .hero {
-        position: relative;
-        width: 100%;
-        height: 70vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        text-align: center;
-    }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-dark);
+            margin: 0;
+            color: var(--text-light);
+        }
 
-    .hero-bg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        object-fit: cover;   
+        .navbar {
+            background: #22223b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            padding: 1rem 2rem;
+            border-radius: 0 0 20px 20px;
+        }
 
-        image-rendering: auto;
-        filter: brightness(90%) contrast(110%) saturate(115%);
-        transform: scale(1.05);   
-        transition: transform 2s ease-out;
-    }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
 
-    .hero:hover .hero-bg {
-        transform: scale(1.1);  
-    }
+        .navbar-nav .nav-link {
+            color: #ccc;
+            font-weight: 500;
+            margin-right: 20px;
+            transition: 0.3s;
+        }
 
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color);
+        }
 
-    .overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        z-index: 1;
-    }
+        #navbarLoginBtn {
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            background: var(--button-gradient);
+            border: none;
+            color: #fff;
+            transition: 0.4s;
+            box-shadow: 0 4px 15px rgba(111,66,193,0.4);
+        }
 
-    .hero-content {
-        z-index: 2;
-        color: #fff;
-    }
+        #navbarLoginBtn:hover {
+            background: var(--button-hover);
+            box-shadow: 0 6px 20px rgba(111,66,193,0.6);
+        }
 
-    .hero-content h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
+        /* MODAL */
+        .modal-content {
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: none;
+            background: var(--section-bg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
 
-    .btn-get {
-        padding: 10px 28px;
-        border: 2px solid #fff;
-        background: transparent;
-        color: #fff;
-        border-radius: 30px;
-        transition: 0.3s;
-        font-weight: 600;
-        cursor: pointer;
-    }
+        .modal .bi-person-fill {
+            font-size: 2.5rem;
+        }
 
-    .btn-get:hover {
-        background: white;
-        color: black;
-    }
+        .modal input {
+            border-radius: 12px;
+            padding: 12px;
+            background: var(--input-bg);
+            color: var(--text-light);
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
 
-    @media(max-width:768px){
-        .hero { height: 50vh; }
-        .hero-content h1 { font-size: 2rem; }
-    }
+        .modal input::placeholder {
+            color: #bbb;
+        }
 
-    @media(max-width:480px){
-        .hero { height: 40vh; }
-        .hero-content h1 { font-size: 1.6rem; }
-    }
+        .modal input:focus {
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(111,66,193,0.5);
+        }
 
-    section.hero {
-        background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-        color: var(--text-light);
-        padding: 100px 20px;
-        text-align: center;
-        border-radius: 0 0 50% 50% / 15%;
-        box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
-    }
-    section.hero h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-    section.hero p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        opacity: 0.9;
-    }
-    section.hero button {
-        border: 2px solid var(--text-light);
-        color: var(--text-light);
-        background: transparent;
-        padding: 12px 30px;
-        font-size: 1rem;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: 0.4s;
-    }
-    section.hero button:hover {
-        background: var(--text-light);
-        color: var(--primary-dark);
-    }
+        .modal button {
+            border-radius: 50px;
+            padding: 12px 0;
+            background: var(--button-gradient);
+            border: none;
+            transition: 0.4s;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(111,66,193,0.4);
+        }
+
+        .modal button:hover {
+            background: var(--button-hover);
+            box-shadow: 0 6px 20px rgba(111,66,193,0.6);
+        }
+
+        /* TOAST */
+        #toastContainer {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1080;
+        }
+
+        .toast {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-weight: 500;
+        }
+
+        .toast-body {
+            font-weight: 500;
+            color: #fff;
+            background: #b00020;
+        }
+
+        /* HERO SECTION */
+        section.hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 0 0 50% 50% / 15%;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+            padding: 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.75) contrast(1.1) saturate(1.15);
+            z-index: 0;
+            transition: transform 2s ease-out;
+        }
+
+        .hero:hover .hero-bg {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-get {
+            padding: 12px 30px;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            background: transparent;
+            color: #fff;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-get:hover {
+            background: #fff;
+            color: #6f42c1;
+            border-color: #fff;
+        }
+
+        /* RESPONSIVE HERO */
+        @media (max-width: 992px) {
+            section.hero { height: 60vh; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 768px) {
+            section.hero { height: 50vh; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            .btn-get { padding: 10px 25px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            section.hero { height: 40vh; border-radius: 0 0 35% 35% / 15%; }
+            .hero-content h1 { font-size: 1.6rem; margin-bottom: 15px; }
+            .hero-content p { font-size: 0.9rem; margin-bottom: 20px; }
+            .btn-get { padding: 8px 20px; font-size: 0.85rem; }
+        }
 
     </style>
     </head>
@@ -268,7 +277,7 @@ $stmt->close();
                     ">
             <?php endif; ?>
 
-            <!-- <span><?= htmlspecialchars($schoolName) ?></span> -->
+            <span><?= htmlspecialchars($schoolName) ?></span>
 
         </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
